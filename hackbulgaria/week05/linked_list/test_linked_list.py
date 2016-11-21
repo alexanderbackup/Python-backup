@@ -64,11 +64,24 @@ class LinkedListTest(unittest.TestCase):
         self.assertEqual(self.ll.index(0).data, 'new_first')
         self.assertTrue(self.ll.list_size == 2)
 
+    def test_add_list(self):
+        self.ll.add_element(1)
+        self.ll.add_element(2)
+        self.ll.add_element(3)
+        self.ll.add_element(4)
+        self.assertEqual(self.ll.add_list(['a', 'b', 'c']),
+                                       ['a', 'b', 'c', 1, 2, 3, 4])
 
-
-
-
-
+    def test_add_linked_list(self):
+        self.ll.add_element(1)
+        self.ll.add_element(2)
+        self.ll.add_element(3)
+        self.ll2 = LinkedList()
+        self.ll2.add_element('a')
+        self.ll2.add_element('b')
+        self.ll2.add_element('c')
+        self.ll.add_linked_list(self.ll2.head)
+        self.assertEqual(self.ll.pprint(), '[1, 2, 3, "a", "b", "c"]')
 
 
 

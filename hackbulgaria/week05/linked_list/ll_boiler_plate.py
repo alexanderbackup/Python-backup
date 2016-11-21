@@ -124,11 +124,23 @@ class LinkedList:
         cur.prev = self.head
         self.list_size += 1
 
-    def add_list(self, list: list):
-        pass
+    def add_list(self, _list: list):
+        result = _list
+        if self.list_size == 1:
+            return self.head.data + result
+        cur = self.head
+        while cur:
+            result.append(cur.data)
+            cur = cur.next
+        return result
 
-    def add_linked_list(self, Linkedlist: "LinkedList"):
-        pass
+    def add_linked_list(self, _LinkedList: "LinkedList"):
+        new_ll = _LinkedList
+        cur = self.head
+        for _ in range(self.list_size-1):
+            cur = cur.next
+        new_ll.prev = cur
+        cur.next = new_ll
 
     def ll_from_to(self, start_index, end_index):
         pass
@@ -144,8 +156,10 @@ foo.add_element(0)
 foo.add_element(1)
 foo.add_element(2)
 foo.add_element(3)
-
-
+bar = LinkedList()
+bar.add_element('a')
+bar.add_element('b')
+bar.add_element('c')
 
 
 
