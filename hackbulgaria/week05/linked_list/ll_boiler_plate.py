@@ -44,7 +44,7 @@ class LinkedList:
         while index:
             current = current.next
             index -= 1
-        return current # current.data
+        return current
 
     def size(self):
         return self.list_size
@@ -139,17 +139,44 @@ class LinkedList:
         cur = self.head
         for _ in range(self.list_size-1):
             cur = cur.next
-        new_ll.prev = cur
-        cur.next = new_ll
-
+        new_ll.head.prev = cur
+        cur.next = new_ll.head
+        self.list_size += new_ll.list_size # alays make sure to update
+                                           # the size of the ne ll
+                                           # pprint() depends on it
     def ll_from_to(self, start_index, end_index):
-        pass
+        if end_index >= self.list_size or start_index > end_index:
+            return False
+        result = []
+        for i in range(start_index, end_index):
+            result.append(self.index(i).data)
+        return result
 
     def pop(self):
-        pass
+        if self.head == None:
+            return False
+        el_for_pop = self.index(self.list_size-1)
+        prev_el = el_for_pop.prev
+        el_for_pop.prev = None
+        prev_el.next = None
+        self.list_size -= 1
+        return el_for_pop.data
 
     def reduce_to_unique(self):
-        pass
+        if self.head == None:
+            return False
+        check = set()
+        cur = self.head
+        while cur:
+            if cur.data not in check:
+                check.add(cur.data)
+                cur = cur.next
+            else:
+                temp = cur.prev
+                temp.next = cur.next
+                cur = cur.next
+                self.list_size -= 1
+
 
 foo = LinkedList()
 foo.add_element(0)

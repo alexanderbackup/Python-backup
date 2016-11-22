@@ -80,11 +80,41 @@ class LinkedListTest(unittest.TestCase):
         self.ll2.add_element('a')
         self.ll2.add_element('b')
         self.ll2.add_element('c')
-        self.ll.add_linked_list(self.ll2.head)
+        self.ll.add_linked_list(self.ll2)
         self.assertEqual(self.ll.pprint(), '[1, 2, 3, "a", "b", "c"]')
 
+    def test_ll_from_to(self):
+        self.ll.add_element(1)
+        self.ll.add_element(2)
+        self.ll.add_element(3)
+        self.ll.add_element('a')
+        self.ll.add_element('b')
+        self.assertEqual(self.ll.ll_from_to(1, 4), 
+                         [2, 3, "a"])
+        self.assertFalse(self.ll.ll_from_to(1, 5))
+        self.assertFalse(self.ll.ll_from_to(2, 2))
+        self.assertFalse(self.ll.ll_from_to(3, 2))
 
+    def test_pop(self):
+        self.assertFalse(self.ll.pop())
+        self.ll.add_element(1)
+        self.ll.add_element(2)
+        self.ll.add_element(3)
+        self.assertEqual(self.ll.list_size, 3)
+        self.assertEqual(self.ll.pop(), 3)
+        self.assertEqual(self.ll.list_size, 2)
 
+    def test_reduce_to_unique(self):
+        self.ll.add_element(1)
+        self.ll.add_element(2)
+        self.ll.add_element(3)
+        self.ll.add_element(1)
+        self.ll.add_element(2)
+        self.ll.add_element(3)
+        self.assertEqual(self.ll.list_size, 6)
+        self.ll.reduce_to_unique()
+        self.assertEqual(self.ll.pprint(), '[1, 2, 3]')
+        self.assertEqual(self.ll.list_size, 3)
 
 
 if __name__ == '__main__':
