@@ -51,7 +51,7 @@ class Tree:
         else:
             cur = node
         if cur.children == []:
-            return 2 # +1 f or the last and + 1 for the root 
+            return 2 # +1 for the last and + 1 for the root 
         else:
             for child in cur.children:
                 if self.count_nodes(child):
