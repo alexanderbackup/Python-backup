@@ -1,0 +1,25 @@
+SELECT address FROM studio WHERE name = 'MGM';
+SELECT birthdate FROM Moviestar WHERE name = 'Sandra Bullock';
+SELECT name FROM movieexec WHERE networth > '10000000' ;
+SELECT name FROM Moviestar WHERE gender = 'M' OR address = 'Prefect Rd.';
+INSERT INTO moviestar('name', 'address', 'gender', 'birthdate') VALUES('Zahari Baharov', 'Somewhere st.', 'M', '12-12-31');
+DELETE FROM studio WHERE address LIKE '%5%';
+UPDATE movie  SET studioname = 'Fox' WHERE title like '%star%';
+
+# Relations
+
+SELECT moviestar.name 
+FROM moviestar, starsin, movie 
+WHERE starsin.starname = moviestar.name AND starsin.movietitle = movie.title AND moviestar.gender = "M" AND movie.title = "Terms of Endearment";
+SELECT DISTINCT(starsin.starname)
+FROM moviestar, movie, starsin
+WHERE starsin.movieyear = "1995" AND movie.studioname = "MGM";
+SELECT president
+FROM studio
+Where name="MGM";
+SELECT title
+FROM movie
+WHERE length > (SELECT length FROM movie WHERE title = "Gone With the Wind");
+SELECT DISTINCT(movie.title)
+FROM movie, movieexec
+WHERE movieexec.cert = movie.producer AND movieexec.networth > (SELECT networth FROM movieexec WHERE name = "Merv Griffin");

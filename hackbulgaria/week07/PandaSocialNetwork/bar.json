@@ -1,0 +1,40 @@
+{
+    "Geri,4@hackbulgaria.com,female": [
+        [
+            "Lili",
+            "3@hackbulgaria.com",
+            "female"
+        ]
+    ],
+    "Ivo,1@hackbulgaria.com,male": [
+        [
+            "Pe6o",
+            "2@hackbulgaria.com",
+            "male"
+        ]
+    ],
+    "Lili,3@hackbulgaria.com,female": [
+        [
+            "Pe6o",
+            "2@hackbulgaria.com",
+            "male"
+        ],
+        [
+            "Geri",
+            "4@hackbulgaria.com",
+            "female"
+        ]
+    ],
+    "Pe6o,2@hackbulgaria.com,male": [
+        [
+            "Ivo",
+            "1@hackbulgaria.com",
+            "male"
+        ],
+        [
+            "Lili",
+            "3@hackbulgaria.com",
+            "female"
+        ]
+    ]
+}

@@ -1,0 +1,21 @@
+SELECT ships.name, classes.country, classes.numguns,  ships.launched
+FROM classes
+JOIN ships
+ON ships.class = classes.class;
+
+...
++WHERE ships.name = classes.class;
+
+SELECT ships.name
+FROM ships
+JOIN outcomes
+ON ships.name = outcomes.ship
+JOIN battles
+ON outcomes.battle = battles.name
+WHERE battles.date like "%1942%";
+
+SELECT classes.country, ships.name
+FROM classes
+JOIN ships ON classes.class = ships.class
+LEFT JOIN outcomes ON outcomes.ship = ships.name
+WHERE outcomes.battle is Null AND classes.country is not Null

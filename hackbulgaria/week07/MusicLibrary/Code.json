@@ -1,0 +1,26 @@
+{
+    "name": "Code",
+    "played_songs": [],
+    "repeat": true,
+    "shuffle": true,
+    "song_list": [
+        {
+            "_length": "3:44",
+            "album": "The Sons of Odin",
+            "artist": "Manowar",
+            "title": "Odin"
+        },
+        {
+            "_length": "1:14:32",
+            "album": "The Sons of Odin",
+            "artist": "Manowar",
+            "title": "Thor"
+        },
+        {
+            "_length": "5:16",
+            "album": "Napipai gooo",
+            "artist": "Azis",
+            "title": "Habibi"
+        }
+    ]
+}

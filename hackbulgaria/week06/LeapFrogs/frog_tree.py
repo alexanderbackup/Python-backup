@@ -84,7 +84,7 @@ class LeapFrogs:
                 return check
 
 
-foo = LeapFrogs(10)
+foo = LeapFrogs(5)
 foo.add_move(foo.root)
 foo.find_answer(foo.root, foo.frogs_end)
 

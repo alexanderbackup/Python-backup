@@ -1,0 +1,32 @@
+SELECT movie.title, movie.year, studio.name, studio.address
+FROM movie
+LEFT JOIN studio
+ON movie.studioname = studio.name 
+WHERE movie.length > 120;
+SELECT DISTINCT movie.studioname, starsin.starname
+FROM movie
+JOIN starsin
+ON starsin.movietitle = movie.title;
+SELECT DISTINCT movieexec.name
+FROM movie
+LEFT JOIN movieexec
+WHERE movieexec.cert in (SELECT movie.producer
+FROM movie
+JOIN starsin
+ON starsin.movietitle = movie.title 
+WHERE starsin.starname = "Harrison Ford");
+SELECT  name
+FROM movieexec
+LEFT JOIN (SELECT DISTINCT movie.producer
+FROM movie
+LEFT JOIN starsin
+ON starsin.starname = "Harrison Ford"
+WHERE starsin.movietitle = movie.title)
+WHERE producer = cert;
+
+
+# Posledna zaqvka !
+SELECT moviestar.name
+FROM moviestar
+WHERE name NOT IN (SELECT starname FROM starsin)
+
