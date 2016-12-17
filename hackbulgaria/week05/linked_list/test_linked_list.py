@@ -89,9 +89,9 @@ class LinkedListTest(unittest.TestCase):
         self.ll.add_element(3)
         self.ll.add_element('a')
         self.ll.add_element('b')
-        self.assertEqual(self.ll.ll_from_to(1, 4), 
-                         [2, 3, "a"])
-        self.assertFalse(self.ll.ll_from_to(1, 5))
+        self.assertEqual(self.ll.ll_from_to(1, 3).pprint(), 
+                         '[2, 3, "a"]')
+        self.assertFalse(self.ll.ll_from_to(1, 6))
         self.assertFalse(self.ll.ll_from_to(2, 2))
         self.assertFalse(self.ll.ll_from_to(3, 2))
 
