@@ -71,11 +71,25 @@ CREATE_VISITATION_TABLE = '''
 
 SELECT_PATIENTS = '''SELECT * FROM PATIENT'''
 
-SELECT_DOCTORS_AND_DOC_ID = '''SELECT doctor.id, username, academic_title FROM User JOIN doctor ON doctor.id = user.id'''
-
 INSERT_INTO_USER = '''INSERT INTO USER(USERNAME, PASSWORD, AGE) VALUES(?, ?, ?)'''
 
 INSERT_INTO_HOSPITAL = '''INSERT INTO HOSPITAL_STAY(ROOM, INJURY, STARTDATE, ENDDATE, PATIENT_ID) VALUES(?, ?, ?, ?, ?)'''
+
+# USED IN register_into_system
+
+SELECT_DOCTORS_AND_DOC_ID = '''SELECT doctor.id, username, academic_title FROM User JOIN doctor ON doctor.id = user.id'''
+
+# insert user, who is doctor
+INSERT_USER_AS_DOCTOR = '''INSERT INTO user(username, password, age) VALUES(?, ?, ?)'''
+
+INSERT_DOCTOR_VALUES = '''INSERT INTO doctor(id, academic_title) VALUES(?, ?)'''
+
+# insert user, who is patient
+INSERT_USER_AS_PATIENT = '''INSERT INTO user(username, password, age) VALUES(?, ?, ?)'''
+
+INSERT_PATIENT_VALUES = '''INSERT INTO patient(id, doctor_id) VALUES(?, ?)'''
+
+INSERT_PATIENT_IN_HOSPITAL = '''INSERT INTO hospital_stay(startdate, enddate, room, injury, patient_id) VALUES(?, ?, ?, ?, ?)'''
 
 
 

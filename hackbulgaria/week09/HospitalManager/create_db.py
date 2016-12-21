@@ -93,24 +93,71 @@ class HospitalManager:
                     break
                 except:
                     print('Invalid input!')
-            self.insert_user(username, 
+            print('select a room from 1 to 10:')            
+            while True:
+                room = input()
+                if room == '10' or (room in '123456789' 
+                                    and len(room) < 2):
+                    break
+                print('Invalid input!')            
+            print('what\'s your injury?')
+            injury = input()
+            print('choose how much you will stay(max of 9 days):')
+            while True:
+                staying = input()
+                try:
+                    staying = abs(int(staying))
+                    if 0 == staying or staying > 9:
+                        raise ValueError
+                    break
+                except:
+                    print('Invalid input!')
+                            
+            self.insert_user(username,
                              password, 
                              age, 
-                             [is_doctor, chosen_doc])
+                             [is_doctor, 
+                              chosen_doc,
+                              staying,
+                              room, 
+                              injury])
+        print('success')                             
         # TODO: Auto Log in after registration !
-        auto_login(username, 
-                   password, 
-                   age, 
-                   [is_doctor, academic_title])
+#        auto_login(username, 
+#                   password, 
+#                   age, 
+#                   [is_doctor, academic_title])
 
     def insert_user(self, username, password, age, is_doctor : list):
-        c.lastrowid # TODO: shows last ID 
         if is_doctor[0]: # if is_doctor from register_into_system True
-            c.execute()
-        else:
-            c.execute()
-        db.commit()
-        # TODO: return to LOGIN !
+            c.execute(INSERT_USER_AS_DOCTOR, (username,
+                                              password,
+                                              age))
+            take_last_id = c.lastrowid # shows last ID
+            c.execute(INSERT_DOCTOR_VALUES, (take_last_id,
+                                             is_doctor[1]))
+            db.commit()
+            return
+        else: # it's a PATIENT !
+            c.execute(INSERT_USER_AS_PATIENT, (username,
+                                               password,
+                                               age))
+            take_last_id = c.lastrowid
+            c.execute(INSERT_PATIENT_VALUES, (take_last_id,
+                                              is_doctor[1]))
+                                              
+            # hospital stay is req for patients !
+            startdate = datetime.date.today()
+            enddate = startdate + datetime.timedelta(days=is_doctor[2])
+            take_last_id = c.lastrowid
+            c.execute(INSERT_PATIENT_IN_HOSPITAL, 
+                                            (str(startdate),
+                                             str(enddate),
+                                             is_doctor[3],
+                                             is_doctor[4],
+                                             take_last_id))       
+            db.commit()
+            return
 
     def hide_password(self):
 
@@ -130,6 +177,7 @@ class HospitalManager:
 
     def exit_system(self):
         return exit(0)
+
 
 while True:
     print('''Welcome to Hospital Manager!\n

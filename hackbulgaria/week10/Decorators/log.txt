@@ -1,0 +1,11 @@
+INFO:root:something_heavy was called and took 1.001612901687622 seconds to complete
+INFO:root:get_low was called at 2016-12-20 23:44:56.121503
+INFO:root:get_low was called at 2016-12-20 23:45:06.176656
+INFO:root:something_heavy was called and took 2.0024964809417725 seconds to complete
+INFO:root:something_heavy was called and took 2.002613067626953 seconds to complete
+INFO:root:get_low was called at 2016-12-21 00:00:12.307172
+INFO:root:get_low was called at 2016-12-21 00:00:37.614592
+INFO:root:get_low was called at 2016-12-21 00:02:48.912934
+INFO:root:get_low was called at 2016-12-21 00:03:13.467628
+INFO:root:get_low was called at 2016-12-21 00:08:44.268079
+INFO:root:something_heavy was called and took 2.002345085144043 seconds to complete
