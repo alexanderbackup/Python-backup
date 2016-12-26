@@ -7,7 +7,7 @@ def log(file_name):
     def _log(func):  
         logging.basicConfig(filename=file_name, level=logging.INFO)
         @wraps(func)
-        def wrapper():
+        def wrapper(*args, **kwargs):
             logging.info('{0} was called at {1}'.format(
                                 func.__name__,
                                 str(datetime.datetime.now()))
@@ -19,7 +19,7 @@ def log(file_name):
 
 def encrypt(key):    
     def decorate_func(func):
-        foo = CaesarCypther(key, func())
+        foo = CaesarCypther(key, func(1))
         foo.encipher()
         result = foo.result
         @wraps(func)
@@ -31,8 +31,8 @@ def encrypt(key):
 
 @log('log.txt')
 @encrypt(2)
-def get_low():
+def get_low(a):
     return "Get get get low"
 
-print(get_low())
+print(get_low(1))
 

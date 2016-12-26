@@ -1,0 +1,1 @@
+export PYTHONPATH="$PYTHONPATH:/home/elamehs/PythonStuff/hackbulgaria/week10/Cinema-Reservation/"
