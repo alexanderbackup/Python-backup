@@ -7,15 +7,15 @@ def show_projections(cursor, answer):
         projs = cursor.execute(PROJECTIONS_1_ORDERED_BY_DATE, (ans[0])).fetchall()
         print('Projections for movie ' + projs[0][0] +' :')
         for mov in projs:
-            print('[?] - {0} {1} ({2})'.format(mov[1],
-                                         mov[2],
-                                         mov[3]))
+            print('[{0}] - {1} {2} ({3})'.format(mov[1],
+                                                 mov[2],
+                                                 mov[3],
+                                                 mov[4]))
     elif len(ans) == 2:
         projs = cursor.execute(PROJECTIONS_2_ORDERED_BY_DATE, (ans[0], ans[1])).fetchall()
-        print('Projections for movie ' + projs[0][0] + ' on date ' + projs[0][1]+ ' :')
+        print('Projections for movie ' + projs[0][0] + ' on date ' + projs[0][2]+ ' :')
         for mov in projs:
-            print('[?] - {0} ({1})'.format(mov[2],
-                                         mov[3]))            
-    else:
-        print('SOME ERROR')
-        exit(0)
+            print('[{0}] - {1} ({2})'.format(mov[1],
+                                             mov[3],
+                                             mov[4]))            
+    return projs

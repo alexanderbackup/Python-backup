@@ -1,27 +1,34 @@
 from user_interface.interface import CinemaInterface
+from user_interface.custom_exceptions import *
 
-user = None
+
+user_name = None
 password = None
 
 while True:
     answer = input()
     foo = CinemaInterface()
     if answer == 'show movies':
-        print('Current movies:')
         foo._show_movies()
         
     elif 'show movie projections' in answer and answer != 'show movie projections': # <movie_id> [<date>]
         foo._show_projections(answer)
-        
+
     elif answer == 'make reservation':
-        if user and password:
-            print('??????')
-            foo._make_reservation(user, passowrd)
-        else:
+        if not user_name and not password:
             log_info = foo._log_user() # has to be tuple !
-            user = log_info[0]
+            user_name = log_info[0]
             password = log_info[1]
-        
+            print('<<<So far so gud !>>>') # Eric Cartman 12$C4567
+        try:
+            foo._make_reservation(user_name, password)
+        except(UsernameError, PasswordError) as e:
+            print(e)
+            print('Please try again !')
+            user_name = None
+            password = None
+            continue
+            
     elif answer == 'cancel reservation': # <name>
         pass
         

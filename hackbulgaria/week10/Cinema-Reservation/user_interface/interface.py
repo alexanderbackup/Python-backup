@@ -15,15 +15,15 @@ class CinemaInterface:
         self.c = self.db.cursor()
   
     def _show_movies(self):
-        show_movies(self.c)
+        return show_movies(self.c)
 
     def _show_projections(self, answer):
-        show_projections(self.c, answer)
-
-    def _make_reservation(self):
-        make_reservation(user, passowrd)
+        return show_projections(self.c, answer)
         
-    @validate_password
+    @user_exists
+    def _make_reservation(self, user, password):
+        return make_reservation(user, password)
+        
     @hash_password
     def _log_user(self):
         return log_user()
