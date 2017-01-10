@@ -14,7 +14,12 @@ def hide_password(password):
 def atomic(func):
     @wraps(func)
     def wrapper(*argv):
-        return func(*argv)
+        try:
+            result = func(*argv)
+            db.commit()
+            return 
+        except:
+            db.rollback()
     return wrapper
     
 def user_exists(func):

@@ -1,8 +1,8 @@
+from os import environ, path
 # database name
-DB_NAME = 'queries/cinema.db'
+DB_NAME = path.join(environ.get('PYTHONPATH',''), 'queries/cinema.db')
 
 # cinema size
-
 CINEMA_SIZE = (10, 10)
 
 # create tables
