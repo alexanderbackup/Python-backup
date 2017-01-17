@@ -1,8 +1,12 @@
 from sql_manager import *
 from getpass import getpass
+from validators import PasswordError
+import time
 
 
 def main_menu():
+    login_count = 0
+    login_lock = False
     print("Welcome to our bank service. You are not logged in. \nPlease register or login")
 
     while True:
@@ -13,17 +17,29 @@ def main_menu():
             password = getpass(prompt="Enter your password: ")
             try:
                 register(username, password)
-            except PasswrodError:
+                print("Registration Successfull")
+                
+            except PasswordError:
                 print('''
-                Password needs to:
-                    - be at least 8 symbols long !
-                    - has uppercase character !
-                    - has at least one special symbol !
+    Password needs to:
+        - be at least 8 symbols long !
+        - has uppercase character !
+        - has at least one special symbol !
                 ''')
 
-            print("Registration Successfull")
-
+            
         elif command == 'login':
+            if login_count == 10:
+                oldtime = time.time()
+            if login_lock:
+                m, s = divmod(round(time.time() - oldtime), 60)             
+                if m == 2:
+                    pass
+                else:
+                    timeleft = 
+                    print('You can try to login again after: {0} seconds'.format(timeleft))   
+                    continue
+            login_count += 1
             username = input("Enter your username: ")
             password = getpass(prompt="Enter your password: ")
 
