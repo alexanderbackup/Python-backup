@@ -1,5 +1,5 @@
 
-# TODO: Nobody cares sabout SQL, I have metaprogramming to do !
+# TODO: Nobody cares sabout SQL
 
 DB_NAME = 'test_ikea.db'
                 
