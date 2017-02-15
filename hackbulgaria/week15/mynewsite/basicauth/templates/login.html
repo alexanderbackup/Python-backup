@@ -1,0 +1,16 @@
+<html>
+    <body>
+        {{ login_warning }}
+        <form method="POST" action="{% url 'login_page' %}">
+            {% csrf_token %}
+            {{ login_form.as_p }}
+            <input type="submit" value="Submit">
+        </form>
+
+
+
+
+
+    </body>
+</html>
+

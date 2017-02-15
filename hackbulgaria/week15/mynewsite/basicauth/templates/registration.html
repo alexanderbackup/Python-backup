@@ -1,0 +1,10 @@
+<html>
+    <body>
+        {{ login_warning }}
+        <form method="POST" action="{% url 'register_page' %}">
+            {% csrf_token %}
+            {{ reg_form }}
+            <input type="submit" value="Submit">
+        </form>
+    </body>
+</html>

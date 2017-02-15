@@ -1,4 +1,4 @@
-#!/home/elamehs/PythonStuff/hackbulgaria/week15/env_django/bin/python
+#!/home/whatever/PythonStuff/hackbulgaria/week15/env_django/bin/python
 
 import sys
 import getopt

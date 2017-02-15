@@ -1,4 +1,4 @@
-#!/home/elamehs/PythonStuff/hackbulgaria/week15/env_django/bin/python3
+#!/home/whatever/PythonStuff/hackbulgaria/week15/env_django/bin/python3
 from django.core import management
 
 if __name__ == "__main__":
